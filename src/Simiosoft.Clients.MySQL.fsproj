@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>0.1.0</Version>
+    <Authors>Gabriel Lima</Authors>
+    <Company>Simiosoft</Company>
+    <RepositoryUrl>https://github.com/simiosoft/mysql-client</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
