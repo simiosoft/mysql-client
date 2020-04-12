@@ -1,0 +1,21 @@
+name: Publish NuGet
+
+on:
+  push:
+    branches: [ release ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
+      - name: Setup nuget.config
+        run: sed -i 's/GITHUB_TOKEN/${{ secrets.GITHUB_TOKEN }}/g' nuget.config
+      - name: Pack
+        run: dotnet pack src/Simiosoft.Clients.MySQL.fsproj --configuration Release
+      - name: Publish
+        run: dotnet nuget push **/*.nupkg -s "github"
